@@ -1,11 +1,5 @@
 import React, {Component } from 'react';
-
-
-export interface Chess {
-    xPoint: number;
-    yPoint: number;
-    code: 'BLACK' | 'WHITE' | 'ALLOW' | 'NULL';
-}
+import { Chess } from '../../types/game';
 
 export interface IChessBoardProps {
     chesses: Chess[][];
@@ -155,7 +149,7 @@ export default class ChessBoard extends Component<IChessBoardProps, IChessBoardS
         }
         const x = lastStep[0];
         const y = lastStep[1];
-        if(x && y) {
+        if(x != null && y != null) {
             ctx.fillStyle = "red";
             ctx.fillRect(offset + x*width + width/2 - 2,offset + y*height + height/2 - 2,4,4);
         }
@@ -168,12 +162,14 @@ export default class ChessBoard extends Component<IChessBoardProps, IChessBoardS
         const gridHeight = height /length;
         ctx.strokeStyle='#000';
         for(let i = 0; i <= height; i++) {
+            ctx.beginPath();
             ctx.moveTo(offset + i*gridWidth,offset);//垂直方向画
             ctx.lineTo(offset + i*gridWidth, height + offset);
             ctx.stroke();
             ctx.moveTo(offset,offset + i*gridHeight);//水平方向画
             ctx.lineTo(offset + width,offset + i*gridHeight);
             ctx.stroke();
+            ctx.closePath();
         }
     };
 
@@ -208,7 +204,7 @@ export default class ChessBoard extends Component<IChessBoardProps, IChessBoardS
         const { width, height } = this.props;
         const { offset } = this.state;
         return (
-            <div style={{margin: '100px auto'}}>
+            <div style={{margin: '40px auto'}}>
                 <canvas id="board" width={width + 2*offset} height={height + 2*offset} ref={node => this.canvas = node}/>
             </div>
         )

@@ -1,0 +1,30 @@
+.game-room-content {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.game-room-content > .game-room-single {
+    flex: auto;
+    display: flex;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.game-site-left {
+    margin-top: 76px;
+    height: 200px;
+
+}
+
+.game-table {
+    height: 200px;
+}
+
+.game-site-right {
+    margin-top: 76px;
+    height: 200px;
+}
+
+.game-site-off {
+    cursor: pointer;
+}

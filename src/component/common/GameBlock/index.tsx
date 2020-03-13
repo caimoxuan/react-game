@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './index.less';
+import './index.css';
 
 interface GameBlockProps {
     img: string;
